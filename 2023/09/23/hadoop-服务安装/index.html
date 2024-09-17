@@ -1,0 +1,1484 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>hadoop-服务安装 | MENGLAN</title><meta name="keywords" content="hadoop-服务安装"><meta name="author" content="MENGLAN"><meta name="copyright" content="MENGLAN"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="hadoop-服务安装"><meta name="application-name" content="hadoop-服务安装"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta name="description" content="前置环境准备源码渲染演示所需文件：Mysoft 获取到文件之后 请放入master中的根目录下文件下载好在win下后键入：scp [Mysoft路径] root@[master的ip]:&#x2F;[按需求替换内容即可]注意：mysort文件是放进&quot; &#x2F; &quot;目录下去 需要关闭防火墙按顺序输入命令即可firewall-cmd --state 查看防火墙状态systemctl stop fi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hadoop-服务安装">
+<meta property="og:url" content="http://example.com/2023/09/23/hadoop-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="MENGLAN">
+<meta property="og:description" content="前置环境准备源码渲染演示所需文件：Mysoft 获取到文件之后 请放入master中的根目录下文件下载好在win下后键入：scp [Mysoft路径] root@[master的ip]:&#x2F;[按需求替换内容即可]注意：mysort文件是放进&quot; &#x2F; &quot;目录下去 需要关闭防火墙按顺序输入命令即可firewall-cmd --state 查看防火墙状态systemctl stop fi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img02.anheyu.com/adminuploads/1/2022/09/05/6315e1453758c.webp!cover">
+<meta property="article:published_time" content="2023-09-23T04:05:21.000Z">
+<meta property="article:modified_time" content="2024-05-26T11:38:03.000Z">
+<meta property="article:author" content="MENGLAN">
+<meta property="article:tag" content="hadoop-服务安装">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img02.anheyu.com/adminuploads/1/2022/09/05/6315e1453758c.webp!cover"><link rel="shortcut icon" href="https://i.postimg.cc/850MfL1w/20231003002506.jpg"><link rel="canonical" href="http://example.com/2023/09/23/hadoop-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/"><link rel="preconnect" href="//npm.elemecdn.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  friends_vue_info: undefined,
+  navMusic: true,
+  changeMainColorPost: undefined,
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#3b70fc","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.elemecdn.com/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'hadoop-服务安装',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-05-26 19:38:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="web_box"><div id="web_container"><div id="menu-mask"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button" tabindex="-1"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" href="https://xiao-lu.top/" title="博客" target="_blank"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" href="https://image.anheyu.com/" title="安知鱼图床" target="_blank"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div></div><a id="site-name" href="/"><div class="title">MENGLAN</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child" style="left:-79px;"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child" style="left:-79px;"><li><a class="site-page child faa-parent animated-hover" href="/link/"><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child" style="left:-127px;"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/index.html"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child" style="left:-79px;"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" style="display: flex"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><div class="nav-button" id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" title="搜索🔍"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span> 搜索</span></a></div><div class="nav-button" id="darkmode_navswitch"><a class="darkmode_switchbutton" type="button" href="javascript:void(0);" title="浅色和深色模式转换" onclick="anzhiyu.switchDarkMode()"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke" style="font-size: 1.3rem"></i></a></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/hadoop-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">hadoop-服务安装</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/hadoop-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>hadoop-服务安装</span></a></span></div></div><h1 class="post-title">hadoop-服务安装</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-23T04:05:21.000Z" title="发表于 2023-09-23 12:05:21">2023-09-23</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-05-26T11:38:03.000Z" title="更新于 2024-05-26 19:38:03">2024-05-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="hadoop-服务安装"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为广西"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>广西</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://img02.anheyu.com/adminuploads/1/2022/09/05/6315e1453758c.webp!cover"></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="前置环境准备"><a href="#前置环境准备" class="headerlink" title="前置环境准备"></a>前置环境准备</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">所需文件：Mysoft 获取到文件之后 请放入master中的根目录下</span><br><span class="line">文件下载好在win下后键入：scp [Mysoft路径] root@[master的ip]:/</span><br><span class="line">[按需求替换内容即可]</span><br><span class="line">注意：mysort文件是放进&quot; / &quot;目录下去</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">需要关闭防火墙按顺序输入命令即可</span><br><span class="line">firewall-cmd --state 查看防火墙状态</span><br><span class="line">systemctl stop firewalld.service 停止firewall</span><br><span class="line">systemctl disable firewalld.service 禁止firewall开机启动</span><br><span class="line"></span><br><span class="line">需要准备好三台虚拟机，都安装好Centos7系统，并用SSH工具连接好三台虚拟机。</span><br><span class="line">推荐使用：Xshell</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img1.imgtp.com/2023/09/09/unOo66Go.jpg" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="修改主机名（三台，分别是master，slave1-slave2）"><a href="#修改主机名（三台，分别是master，slave1-slave2）" class="headerlink" title="修改主机名（三台，分别是master，slave1,slave2）"></a>修改主机名（三台，分别是master，slave1,slave2）</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>需要准备好三台虚拟机，都安装好Centos7系统，并用SSH工具连接好三台虚拟机。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">master: hostnamectl set-hostname master</span><br><span class="line">slave1: hostnamectl set-hostname slave1</span><br><span class="line">slave2: hostnamectl set-hostname slave2</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="在master的-x2F-etc-x2F-hosts中配置主机名和IP解析"><a href="#在master的-x2F-etc-x2F-hosts中配置主机名和IP解析" class="headerlink" title="在master的&#x2F;etc&#x2F;hosts中配置主机名和IP解析"></a>在master的&#x2F;etc&#x2F;hosts中配置主机名和IP解析</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用 vi &#x2F;etc&#x2F;hosts</li>
+<li>[键盘Shift+G处于最底部、键盘O回车一行] 在末尾添加主机名IP与解析</li>
+<li>例如：127.0.0.1 master</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/hadoop/1.jpg" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h1 id="配置免密"><a href="#配置免密" class="headerlink" title="配置免密"></a>配置免密</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">按需求键入命令即可</span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa [键入此命令之后一直回车即可]</span><br><span class="line">ssh-copy-id -i root@master</span><br><span class="line">ssh-copy-id -i root@slave1</span><br><span class="line">ssh-copy-id -i root@slave2</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h1 id="安装JDk"><a href="#安装JDk" class="headerlink" title="安装JDk"></a>安装JDk</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>进进入&#x2F;Mysoft解压JDK</li>
+<li>键入tar -xzvf jdk-8u212-linux-x64.tar.gz -C &#x2F;usr&#x2F;local&#x2F;src</li>
+<li>[命令解析] tar -xzvf [JDK路径] -C [解压路径]</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="添加系统变量"><a href="#添加系统变量" class="headerlink" title="添加系统变量"></a>添加系统变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用vi &#x2F;root&#x2F;.bash_profile</li>
+<li>[键盘Shift+G处于最底部、键盘O回车一行] 末尾处添加<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#JAVA</span><br><span class="line">export JAVA_HOME=/usr/local/src/jdk1.8.0_212</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="刷新环境变量"><a href="#刷新环境变量" class="headerlink" title="刷新环境变量"></a>刷新环境变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用source &#x2F;root&#x2F;.bash_profile</li>
+<li>或者. &#x2F;root&#x2F;.bash_profile 即可刷新两台slave机器的变量使其生效</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="检查安装"><a href="#检查安装" class="headerlink" title="检查安装"></a>检查安装</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>用java -version校验一下是否成功，能输出JAVA版本号就是安装成功了。</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="将jdk、环境变量、hosts文件拷贝到两台slave中"><a href="#将jdk、环境变量、hosts文件拷贝到两台slave中" class="headerlink" title="将jdk、环境变量、hosts文件拷贝到两台slave中"></a>将jdk、环境变量、hosts文件拷贝到两台slave中</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li><p>拷贝slave1</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scp -r /usr/local/src/jdk1.8.0_212/ slave1:/usr/local/src/</span><br><span class="line">scp /root/.bash_profile slave1:/root/.bash_profile</span><br><span class="line">scp /etc/hosts slave1:/etc/hosts</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拷贝slave2</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scp -r /usr/local/src/jdk1.8.0_212/ slave2:/usr/local/src/</span><br><span class="line">scp /root/.bash_profile slave2:/root/.bash_profile</span><br><span class="line">scp /etc/hosts slave2:/etc/hosts</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="完成后到slave1、slave2检查下jdk的安装"><a href="#完成后到slave1、slave2检查下jdk的安装" class="headerlink" title="完成后到slave1、slave2检查下jdk的安装"></a>完成后到slave1、slave2检查下jdk的安装</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用source &#x2F;root&#x2F;.bash_profile</li>
+<li>或者. &#x2F;root&#x2F;.bash_profile 即可刷新两台slave机器的变量使其生效</li>
+<li>才能使用java -version校验一下是否成功</li>
+<li>能输出JAVA版本号就是安装成功了。</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h1 id="安装Hadoop"><a href="#安装Hadoop" class="headerlink" title="安装Hadoop"></a>安装Hadoop</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>进入&#x2F;Mysoft解压Hadoop<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zxvf hadoop-3.1.3.tar.gz -C /usr/local/src/</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="添加系统变量-1"><a href="#添加系统变量-1" class="headerlink" title="添加系统变量"></a>添加系统变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用vi &#x2F;root&#x2F;.bash_profile</li>
+<li>[键盘Shift+G处于最底部、键盘O回车一行] 末尾处添加<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#Hadoop</span><br><span class="line">export HADOOP_HOME=/usr/local/src/hadoop-3.1.3</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="刷新环境变量-1"><a href="#刷新环境变量-1" class="headerlink" title="刷新环境变量"></a>刷新环境变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用source &#x2F;root&#x2F;.bash_profile</li>
+<li>或者. &#x2F;root&#x2F;.bash_profile 即可刷新系统变量使其生效</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="检查安装-1"><a href="#检查安装-1" class="headerlink" title="检查安装"></a>检查安装</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>用hadoop version校验安装是否成功，出现版本号就是成功了</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="编辑hadoop配置文件"><a href="#编辑hadoop配置文件" class="headerlink" title="编辑hadoop配置文件"></a>编辑hadoop配置文件</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><p>注意先到hadoop目录下：cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;hadoop-3.1.3&#x2F;etc&#x2F;hadoop&#x2F;</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用：vi /usr/local/src/hadoop-3.1.3/etc/hadoop/workers  后面这个是那些文件的目录</span><br><span class="line"></span><br><span class="line">1. core-site.xml</span><br><span class="line">2. hdfs-site.xml</span><br><span class="line">3. mapred-site.xml</span><br><span class="line">4. yarn-site.xml</span><br><span class="line">5. workers localhost删掉 替换文件所有内容</span><br><span class="line">6. hadoop-env.sh找对应行添加或直接在最后加</span><br></pre></td></tr></table></figure>
+<ol>
+<li>进入&#x2F;usr&#x2F;local&#x2F;src&#x2F;hadoop-3.1.3&#x2F;etc&#x2F;hadoop&#x2F;目录，编辑以下配置文件</li>
+<li><a target="_blank" rel="noopener" href="https://dl.shenyi.ink/?f=/big_data/hadoop/core-site.xml">https://dl.shenyi.ink/?f=/big_data/hadoop/core-site.xml</a></li>
+<li><a target="_blank" rel="noopener" href="https://dl.shenyi.ink/?f=/big_data/hadoop/hdfs-site.xml">https://dl.shenyi.ink/?f=/big_data/hadoop/hdfs-site.xml</a></li>
+<li><a target="_blank" rel="noopener" href="https://dl.shenyi.ink/?f=/big_data/hadoop/mapred-site.xml">https://dl.shenyi.ink/?f=/big_data/hadoop/mapred-site.xml</a></li>
+<li><a target="_blank" rel="noopener" href="https://dl.shenyi.ink/?f=/big_data/hadoop/yarn-site.xml">https://dl.shenyi.ink/?f=/big_data/hadoop/yarn-site.xml</a></li>
+<li><a target="_blank" rel="noopener" href="https://dl.shenyi.ink/?f=/big_data/hadoop/workers">https://dl.shenyi.ink/?f=/big_data/hadoop/workers</a></li>
+<li>localhost删掉 替换文件所有内容</li>
+<li><a target="_blank" rel="noopener" href="https://dl.shenyi.ink/?f=/big_data/hadoop/hadoop-env.sh">https://dl.shenyi.ink/?f=/big_data/hadoop/hadoop-env.sh</a></li>
+<li>localhost删掉 替换文件所有内容</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="把hadoop和环境变量传输到两个slave"><a href="#把hadoop和环境变量传输到两个slave" class="headerlink" title="把hadoop和环境变量传输到两个slave"></a>把hadoop和环境变量传输到两个slave</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scp -r /usr/local/src/hadoop-3.1.3/ slave1:/usr/local/src</span><br><span class="line">scp -r /usr/local/src/hadoop-3.1.3/ slave2:/usr/local/src</span><br><span class="line">scp /root/.bash_profile slave1:/root/.bash_profile</span><br><span class="line">scp /root/.bash_profile slave2:/root/.bash_profile</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="将两台slave机器的变量刷新"><a href="#将两台slave机器的变量刷新" class="headerlink" title="将两台slave机器的变量刷新"></a>将两台slave机器的变量刷新</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用source &#x2F;root&#x2F;.bash_profile</li>
+<li>或者. &#x2F;root&#x2F;.bash_profile 即可刷新系统变量使其生效</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="格式化hdfs（master）"><a href="#格式化hdfs（master）" class="headerlink" title="格式化hdfs（master）"></a>格式化hdfs（master）</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>键入hdfs namenode -format</li>
+<li>注意成功标识：Storage directory &#x2F;opt&#x2F;data&#x2F;hadoop&#x2F;dfs&#x2F;name has been successfully formatted.</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="运行hadoop（master）"><a href="#运行hadoop（master）" class="headerlink" title="运行hadoop（master）"></a>运行hadoop（master）</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>键入start-all.sh</li>
+<li>输入完成后，直接键入jps，出现6个东西就对了</li>
+<li>注意：每台机子都要去看一下是否成功</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/hadoop/3.jpg" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h1 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>进入&#x2F;Mysoft解压mysql-5.7.42-1.el7.x86_64.rpm-bundle.tar</li>
+<li>键入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -xvf mysql-5.7.42-1.el7.x86_64.rpm-bundle.tar</span><br></pre></td></tr></table></figure></li>
+<li>这次不需要制定路径 直接解压到Mysoft里即可</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="使用yum安装MySQL"><a href="#使用yum安装MySQL" class="headerlink" title="使用yum安装MySQL"></a>使用yum安装MySQL</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>直接输入即可:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install mysql-community-&#123;server,client,common,libs&#125;-*</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="启动mysql服务"><a href="#启动mysql服务" class="headerlink" title="启动mysql服务"></a>启动mysql服务</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>设置开机自启动：systemctl enable mysqld.service</li>
+<li>启动mysql：systemctl start mysqld.service</li>
+<li>查看是否启动（绿色的标志就是启动成功）：systemctl status mysqld.service</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/mysql/1.PNG" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="获取mysql初始密码"><a href="#获取mysql初始密码" class="headerlink" title="获取mysql初始密码"></a>获取mysql初始密码</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><p>这里有两个办法（建议用第二个）</p>
+<ol>
+<li>第一个办法：直接去看log文件 [cat &#x2F;var&#x2F;log&#x2F;mysql.log | grep password]<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat /var/log/mysql.log | grep password</span><br></pre></td></tr></table></figure></li>
+<li>第二个办法：直接查找 [grep “password is generated” &#x2F;var&#x2F;log&#x2F;mysqld.log | awk ‘{print $NF}’]<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grep &quot;password is generated&quot; /var/log/mysqld.log | awk &#x27;&#123;print $NF&#125;&#x27;</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/mysql/2.PNG" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="初始化密码"><a href="#初始化密码" class="headerlink" title="初始化密码"></a>初始化密码</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>键入mysql_secure_installation即可</li>
+<li>之后输入获得到初始密码 然后输入新的密码 例如：123456 输入两次 然后 再输入两次</li>
+<li>最后的y&#x2F;n 依照顺序 y y n y y</li>
+<li>密码必须要设置复杂性大写字母和数字以及符号</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="进入mysql设置权限"><a href="#进入mysql设置权限" class="headerlink" title="进入mysql设置权限"></a>进入mysql设置权限</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>输入密码进入mysql：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql -uroot -pMysql123...</span><br></pre></td></tr></table></figure></li>
+<li>直接在mysql shell键入 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grant all privileges on *.* to &#x27;用户名&#x27;@&#x27;%&#x27; identified by &#x27;登录密码&#x27; with grant option</span><br></pre></td></tr></table></figure></li>
+<li>做完这些然后输入一个 “;”之后出现一个ok就得了</li>
+<li>然后在输入：flush privileges 还是输入”;”之后出现一个ok就得了</li>
+<li>最后输入：exit退出就好了</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/mysql/3.PNG" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h1 id="安装hive"><a href="#安装hive" class="headerlink" title="安装hive"></a>安装hive</h1><h2 id="进入Mysoft解压hive"><a href="#进入Mysoft解压hive" class="headerlink" title="进入Mysoft解压hive"></a>进入Mysoft解压hive</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zxvf apache-hive-3.1.2-bin.tar.gz -C /usr/local/src</span><br><span class="line">cd /usr/local/src</span><br><span class="line">mv apache-hive-3.1.2-bin hive</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="添加系统变量-2"><a href="#添加系统变量-2" class="headerlink" title="添加系统变量"></a>添加系统变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用vi &#x2F;root&#x2F;.bash_profile</li>
+<li>[键盘Shift+G处于最底部、键盘O回车一行] 末尾处添加<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#hive</span><br><span class="line">export HIVE_HOME=/usr/local/src/hive</span><br><span class="line">export PATH=$PATH:$HIVE_HOME/bin</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="刷新系统变量"><a href="#刷新系统变量" class="headerlink" title="刷新系统变量"></a>刷新系统变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用source &#x2F;root&#x2F;.bash_profile</li>
+<li>或者. &#x2F;root&#x2F;.bash_profile 即可刷新系统变量使其生效</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="在hive的conf目录下-新建hive-site-xml"><a href="#在hive的conf目录下-新建hive-site-xml" class="headerlink" title="在hive的conf目录下 新建hive-site.xml"></a>在hive的conf目录下 新建hive-site.xml</h2><p>下载hive-site-xml路径3:<a target="_blank" rel="noopener" href="https://dl.shenyi.ink/?f=/big_data/hive/hive-site.xml">https://dl.shenyi.ink/?f=/big_data/hive/hive-site.xml</a></p>
+<div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>hive-site.xml 下载此文件 并修改里面的内容<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">touch hive-site.xml</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="将java连接mysql的驱动包拷贝到hive下的lib目录下"><a href="#将java连接mysql的驱动包拷贝到hive下的lib目录下" class="headerlink" title="将java连接mysql的驱动包拷贝到hive下的lib目录下"></a>将java连接mysql的驱动包拷贝到hive下的lib目录下</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><p>直接把复制即可</p>
+<ol>
+<li>键入<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp /mysort/mysql-connector-java-5.1.37.jar /usr/local/src/hive/lib/ </span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="将java连接mysql的驱动包拷贝到hive下的lib目录下-1"><a href="#将java连接mysql的驱动包拷贝到hive下的lib目录下-1" class="headerlink" title="将java连接mysql的驱动包拷贝到hive下的lib目录下"></a>将java连接mysql的驱动包拷贝到hive下的lib目录下</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>先位于hive根目录:cd ..</li>
+<li>再键入</li>
+<li>rm lib&#x2F;guava-19.0.jar 后面出现一串东西直接输入 y 即可</li>
+<li>直接键入即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp /usr/local/src/hadoop-3.1.3/share/hadoop/common/lib/guava-27.0-jre.jar /usr/local/src/hive/lib/</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h2 id="修改hive配置文件"><a href="#修改hive配置文件" class="headerlink" title="修改hive配置文件"></a>修改hive配置文件</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi conf/hive-site.xml </span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><ol>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/hive/1.jpg" alt="OIP _3_.jpg"></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="把hive和环境变量传输到两个slave"><a href="#把hive和环境变量传输到两个slave" class="headerlink" title="把hive和环境变量传输到两个slave"></a>把hive和环境变量传输到两个slave</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>slave1<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scp -r /usr/local/src/hive/ slave1:/usr/local/src/</span><br></pre></td></tr></table></figure></li>
+<li>slave2<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scp -r /usr/local/src/hive/ slave2:/usr/local/src/</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="初始化mysql的数据架构-最后成功的效果"><a href="#初始化mysql的数据架构-最后成功的效果" class="headerlink" title="初始化mysql的数据架构 最后成功的效果"></a>初始化mysql的数据架构 最后成功的效果</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>键入：schematool -dbType mysql -initSchema  即可<br>提示Initialization script completed就可以了<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">schematool -dbType mysql -initSchema</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/hive/2.jpg" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="校验hive安装（确保hadoop已经启动）"><a href="#校验hive安装（确保hadoop已经启动）" class="headerlink" title="校验hive安装（确保hadoop已经启动）"></a>校验hive安装（确保hadoop已经启动）</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>键入 hive</li>
+<li>看到hive&gt;后，输入show databases;</li>
+<li>看到输出即为安装hive成功</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/hive/3.jpg" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h1 id="安装zookeeper"><a href="#安装zookeeper" class="headerlink" title="安装zookeeper"></a>安装zookeeper</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>进入&#x2F;Mysoft解压zookeeper 并 重命名<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zxvf apache-zookeeper-3.5.7-bin.tar.gz -C /usr/local/src</span><br><span class="line">cd /usr/local/src</span><br><span class="line">mv apache-zookeeper-3.5.7-bin zookeeper</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="添加系统变量-3"><a href="#添加系统变量-3" class="headerlink" title="添加系统变量"></a>添加系统变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用vi &#x2F;root&#x2F;.bash_profile</li>
+<li>[键盘Shift+G处于最底部、键盘O回车一行] 末尾处添加<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#zookeeper</span><br><span class="line">export ZOOKEEPER_HOME=/usr/local/src/zookeeper</span><br><span class="line">export PATH=$PATH:$ZOOKEEPER_HOME/bin</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="刷新环境变量-2"><a href="#刷新环境变量-2" class="headerlink" title="刷新环境变量"></a>刷新环境变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用source &#x2F;root&#x2F;.bash_profile</li>
+<li>或者. &#x2F;root&#x2F;.bash_profile 即可刷新系统变量使其生效</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="进入zookeeper的conf下改配置"><a href="#进入zookeeper的conf下改配置" class="headerlink" title="进入zookeeper的conf下改配置"></a>进入zookeeper的conf下改配置</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>将zoo_sample.cfg改名zoo.conf，然后编辑zoo.cfg<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp zoo_sample.cfg zoo.cfg</span><br></pre></td></tr></table></figure></li>
+<li>将下面这些直接复制进去即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dataDir=/usr/local/src/zookeeper/data</span><br><span class="line">dataLogDir=/usr/local/src/zookeeper/logs</span><br><span class="line">server.1=master:2888:3888</span><br><span class="line">server.2=slave1:2888:3888</span><br><span class="line">server.3=slave2:2888:3888</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="创建对应的数据目录-初始化id"><a href="#创建对应的数据目录-初始化id" class="headerlink" title="创建对应的数据目录 初始化id"></a>创建对应的数据目录 初始化id</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><h3 id="这是都是直接键入即可"><a href="#这是都是直接键入即可" class="headerlink" title="这是都是直接键入即可"></a>这是都是直接键入即可</h3><ol>
+<li>cd ..<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mkdir data logs</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo 1 &gt; /usr/local/src/zookeeper/data/myid</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="将配置好的ZOOKEEPER和环境变量-scp到slave1和slave2"><a href="#将配置好的ZOOKEEPER和环境变量-scp到slave1和slave2" class="headerlink" title="将配置好的ZOOKEEPER和环境变量 scp到slave1和slave2"></a>将配置好的ZOOKEEPER和环境变量 scp到slave1和slave2</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scp -r /usr/local/src/zookeeper/ slave1:/usr/local/src</span><br><span class="line">scp -r /usr/local/src/zookeeper/ slave2:/usr/local/src</span><br><span class="line">scp /root/.bash_profile slave1:/root/</span><br><span class="line">scp /root/.bash_profile slave2:/root/</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="修改对应机器的myid文件-改为2和3"><a href="#修改对应机器的myid文件-改为2和3" class="headerlink" title="修改对应机器的myid文件 改为2和3"></a>修改对应机器的myid文件 改为2和3</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>去到slave1运行：（slave1）<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo 2 &gt; /usr/local/src/zookeeper/data/myid</span><br></pre></td></tr></table></figure></li>
+<li>去到slave2运行：（slave2）<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo 3 &gt; /usr/local/src/zookeeper/data/myid </span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="三台机器分别运行-zkServer-sh-start"><a href="#三台机器分别运行-zkServer-sh-start" class="headerlink" title="三台机器分别运行 zkServer.sh start"></a>三台机器分别运行 zkServer.sh start</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>每台机子都要先刷新环境变量</li>
+<li>使用source &#x2F;root&#x2F;.bash_profile</li>
+<li>或者. &#x2F;root&#x2F;.bash_profile 即可刷新系统变量使其生效</li>
+<li>最后在用：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zkServer.sh start</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/zookeeper/1.jpg" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>运行完毕后 分别运行<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">zkServer.sh status</span><br></pre></td></tr></table></figure></li>
+<li>查看状态 应该是1个leader和2个follower就对了</li>
+<li>这一步如果出错了不压迫管他直接跳过</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h1 id="安装hbase"><a href="#安装hbase" class="headerlink" title="安装hbase"></a>安装hbase</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>进入&#x2F;Mysoft解压hbase 并 重命名<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zxvf hbase-2.2.3-bin.tar.gz -C /usr/local/src/</span><br><span class="line">cd /usr/local/src</span><br><span class="line">mv hbase-2.2.3 hbase</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="添加系统变量-4"><a href="#添加系统变量-4" class="headerlink" title="添加系统变量"></a>添加系统变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用vi &#x2F;root&#x2F;.bash_profile</li>
+<li>[键盘Shift+G处于最底部、键盘O回车一行] 末尾处添加<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#hbase</span><br><span class="line">export HBASE_HOME=/usr/local/src/hbase</span><br><span class="line">export PATH=$PATH:$HBASE_HOME/bin</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="刷新环境变量-3"><a href="#刷新环境变量-3" class="headerlink" title="刷新环境变量"></a>刷新环境变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用source &#x2F;root&#x2F;.bash_profile</li>
+<li>或者. &#x2F;root&#x2F;.bash_profile 即可刷新系统变量使其生效</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="进入hbase-x2F-conf目录-分别修改hbase-env-sh和hbase-site-xml"><a href="#进入hbase-x2F-conf目录-分别修改hbase-env-sh和hbase-site-xml" class="headerlink" title="进入hbase&#x2F;conf目录 分别修改hbase-env.sh和hbase-site.xml"></a>进入hbase&#x2F;conf目录 分别修改hbase-env.sh和hbase-site.xml</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>hbase-env.sh （找到对应行修改）</li>
+<li>注意：你vi进去之后直接&#x2F;搜关键词，然后在它的下面把配置复制进去即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/src/jdk1.8.0_212</span><br><span class="line">export HBASE_MANAGES_ZK=false</span><br></pre></td></tr></table></figure></li>
+<li>hbase-site.xml<br>这个文件就是直接复制进去，如果没有这个文件就新建hbase-site.xml<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi hbase-site.xml</span><br></pre></td></tr></table></figure>
+<a target="_blank" rel="noopener" href="https://dl.shenyi.ink/?f=/big_data/hbase/hbase-site.xml">https://dl.shenyi.ink/?f=/big_data/hbase/hbase-site.xml</a></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h2 id="修改regionservers-配置集群"><a href="#修改regionservers-配置集群" class="headerlink" title="修改regionservers 配置集群"></a>修改regionservers 配置集群</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>vi regionservers</li>
+<li>进去直接将第一个删掉把下面的slave1和slave2加上去即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">slave1</span><br><span class="line">slave2</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="将配置好的HBase和环境变量-scp到slave1和slave2"><a href="#将配置好的HBase和环境变量-scp到slave1和slave2" class="headerlink" title="将配置好的HBase和环境变量 scp到slave1和slave2"></a>将配置好的HBase和环境变量 scp到slave1和slave2</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scp -r /usr/local/src/hbase/ slave1:/usr/local/src</span><br><span class="line">scp -r /usr/local/src/hbase/ slave2:/usr/local/src</span><br><span class="line">scp /root/.bash_profile slave1:/root/</span><br><span class="line">scp /root/.bash_profile slave2:/root/</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>先cd ..回去 </li>
+<li>start-hbase.sh</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="检查-1"><a href="#检查-1" class="headerlink" title="检查"></a>检查</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">如果没有出错 运行jps查看是否有HMaster或者HRegionServer，有的话就是启动成功了</span><br><span class="line">运行hbase shell即可进入命令行，看到hbase(main):001:0即为成功。</span><br><span class="line">接着输入list_namespace出现default和hbase两个namespace，这一步就彻底成功了。</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/hbase/1.jpg" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h1 id="安装flink"><a href="#安装flink" class="headerlink" title="安装flink"></a>安装flink</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>进入&#x2F;Mysoft解压hbase 并 重命名<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zxvf flink-1.14.0-bin-scala_2.12.tgz -C /usr/local/src</span><br><span class="line">cd /usr/local/src</span><br><span class="line">mv flink-1.14.0/ flink</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="添加系统变量-5"><a href="#添加系统变量-5" class="headerlink" title="添加系统变量"></a>添加系统变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用vi &#x2F;root&#x2F;.bash_profile</li>
+<li>[键盘Shift+G处于最底部、键盘O回车一行] 末尾处添加<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#flink</span><br><span class="line">export FLINK_HOME=/usr/local/src/flink</span><br><span class="line">export PATH=$PATH:$FLINK_HOME/bin</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="刷新环境变量-4"><a href="#刷新环境变量-4" class="headerlink" title="刷新环境变量"></a>刷新环境变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用source &#x2F;root&#x2F;.bash_profile</li>
+<li>或者. &#x2F;root&#x2F;.bash_profile 即可刷新系统变量使其生效</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="进入flink-x2F-conf目录下-编辑flink-conf-yaml和workers"><a href="#进入flink-x2F-conf目录下-编辑flink-conf-yaml和workers" class="headerlink" title="进入flink&#x2F;conf目录下 编辑flink-conf.yaml和workers"></a>进入flink&#x2F;conf目录下 编辑flink-conf.yaml和workers</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>vi进去修改flink-conf.yaml<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jobmanager.rpc.address: master （特别注意冒号后的空格，绝对不能省略！）</span><br><span class="line">classloader.check-leaked-classloader: false 这个如果找不到直接在最后加即可</span><br></pre></td></tr></table></figure></li>
+<li>vi进去修改workers (填入所有的节点主机名)<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">master</span><br><span class="line">slave1</span><br><span class="line">slave2</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="将配置好的flink和环境变量-scp到slave1和slave2"><a href="#将配置好的flink和环境变量-scp到slave1和slave2" class="headerlink" title="将配置好的flink和环境变量 scp到slave1和slave2"></a>将配置好的flink和环境变量 scp到slave1和slave2</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>先cd ..回去再复制<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scp -r /usr/local/src/flink/ slave1:/usr/local/src</span><br><span class="line">scp -r /usr/local/src/flink/ slave2:/usr/local/src</span><br><span class="line">scp /root/.bash_profile slave1:/root/</span><br><span class="line">scp /root/.bash_profile slave2:/root/</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>运行start-cluster.sh 输出三个机器的starting即可</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img1.imgtp.com/2023/09/06/b2sGBwPB.jpg" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="检查-2"><a href="#检查-2" class="headerlink" title="检查"></a>检查</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">完成后，运行jps，看到master上诱StandaloneSessionClusterEntrypoint和TaskManagerRunner</span><br><span class="line">就是运行成功了。也可以用浏览器访问master节点的8081端口，能看到web管理界面也是</span><br><span class="line">成功了。</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/flink/2.jpg" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h2 id="跑任务"><a href="#跑任务" class="headerlink" title="跑任务"></a>跑任务</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">接着需要跑内置测试案例（比赛需要截图）</span><br><span class="line">内置的案例在flink目录下的examples目录里，需要关注batch（批处理）和streaming（流处</span><br><span class="line">理）目录</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>跑batch案例的方式：</p>
+<ol>
+<li>跑batch案例的方式：</li>
+<li>stop-cluster.sh</li>
+<li>stop-cluster.sh</li>
+<li>flink run -m yarn-cluster &#x2F;usr&#x2F;local&#x2F;src&#x2F;flink&#x2F;examplebatch&#x2F;WordCount.jar</li>
+</ol>
+</li>
+<li><p>link集群模式（flink集群需启动，hadoop无需启动） “建议用这一个”</p>
+<ol>
+<li>start-cluster.sh</li>
+<li>直接复制用这个无需启动hadoop：flink run &#x2F;usr&#x2F;local&#x2F;src&#x2F;flink&#x2F;examples&#x2F;batch&#x2F;WordCount.jar</li>
+<li>WordCount的运行结果是输出一堆(单词,数量)就对了</li>
+</ol>
+</li>
+<li><p>跑streaming案例的方式：开一个新的ssh，运行 </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nc -l -p 18888 (如果nc没找到，yum install nc)</span><br></pre></td></tr></table></figure></li>
+<li><p>在原来的ssh中运行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flink run /usr/local/src/flink/examples/streaming/SocketWindowWordCount.jar --hostname master --port 18888</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">到nc的ssh中，输入几个单词即可，例如jack tom jack jack smith love love help word</span><br><span class="line">然后可以在网页控制台中，task manager,逐个点开节点，看stdout，哪个有内容就截图哪个</span><br><span class="line">截完图后记得取消任务（Running Job-&gt;Cancel）</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="要是出错了也不管它"><a href="#要是出错了也不管它" class="headerlink" title="要是出错了也不管它"></a>要是出错了也不管它</h2><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h1 id="安装spark"><a href="#安装spark" class="headerlink" title="安装spark"></a>安装spark</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>安装spark<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zxvf spark-3.1.1-bin-hadoop3.2.tgz -C /usr/local/src</span><br><span class="line">cd /usr/local/src</span><br><span class="line">mv spark-3.1.1-bin-hadoop3.2/ spark</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="添加系统变量-6"><a href="#添加系统变量-6" class="headerlink" title="添加系统变量"></a>添加系统变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用vi &#x2F;root&#x2F;.bash_profile</li>
+<li>[键盘Shift+G处于最底部、键盘O回车一行] 末尾处添加<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#spark</span><br><span class="line">export SPARK_HOME=/usr/local/src/spark</span><br><span class="line">export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="进入spark的conf目录下-编辑spark-env-sh和workers"><a href="#进入spark的conf目录下-编辑spark-env-sh和workers" class="headerlink" title="进入spark的conf目录下 编辑spark-env.sh和workers"></a>进入spark的conf目录下 编辑spark-env.sh和workers</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>spark-env.sh<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp spark-env.sh.template spark-env.sh</span><br></pre></td></tr></table></figure></li>
+<li>将下面的配置直接添加到最后即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/src/jdk1.8.0_212</span><br><span class="line">export SPARK_MASTER_HOST=master</span><br><span class="line">export SPARK_MASTER_PORT=7077</span><br><span class="line">export SPARK_CONF_DIR=/usr/local/src/spark/conf</span><br><span class="line">export HADOOP_CONF_DIR=/usr/local/src/hadoop-3.1.3/etc/hadoop/</span><br></pre></td></tr></table></figure></li>
+<li>workers<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp workers.template workers</span><br></pre></td></tr></table></figure></li>
+<li>进去之后把最后面的localhost删掉加上下面的配置<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">master</span><br><span class="line">slave1</span><br><span class="line">slave2</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="cp将hive的conf下面的hive-site-xml拷到spark的conf下面"><a href="#cp将hive的conf下面的hive-site-xml拷到spark的conf下面" class="headerlink" title="cp将hive的conf下面的hive-site.xml拷到spark的conf下面"></a>cp将hive的conf下面的hive-site.xml拷到spark的conf下面</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp /usr/local/src/hive/conf/hive-site.xml /usr/local/src/spark/conf/</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><p>将mysql-connector-java-5.1.37.jar 拷贝到sparl下面的jars下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp /mysort/mysql-connector-java-5.1.37.jar /usr/local/src/spark/jars/</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="将配置好的spark和环境变量-scp到slave1和slave2"><a href="#将配置好的spark和环境变量-scp到slave1和slave2" class="headerlink" title="将配置好的spark和环境变量 scp到slave1和slave2"></a>将配置好的spark和环境变量 scp到slave1和slave2</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>先cd ..回去<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scp -r /usr/local/src/spark/ slave1:/usr/local/src</span><br><span class="line">scp -r /usr/local/src/spark/ slave2:/usr/local/src</span><br><span class="line">scp /root/.bash_profile slave1:/root/</span><br><span class="line">scp /root/.bash_profile slave2:/root/</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h2 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>进入spark&#x2F;sbin目录，运行.&#x2F;start-all.sh</li>
+<li>(一定要进来了再运行，要不启动的是hadoop)</li>
+<li>进去之后直接运行: .&#x2F;start-all.sh</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="检查-3"><a href="#检查-3" class="headerlink" title="检查"></a>检查</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">完毕后jps看看，master中有Master和Worker就对了。浏览器访问master的8080也可以看到</span><br><span class="line">状态</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/spark/1.jpg" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="跑任务-1"><a href="#跑任务-1" class="headerlink" title="跑任务"></a>跑任务</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><h3 id="接着需要跑内置测试案例-（比赛需要截图）"><a href="#接着需要跑内置测试案例-（比赛需要截图）" class="headerlink" title="接着需要跑内置测试案例 （比赛需要截图）"></a>接着需要跑内置测试案例 （比赛需要截图）</h3><ol>
+<li>spark on yarn（spark集群无需启动，但 需启动hadoop）<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">spark-submit --master yarn --class org.apache.spark.examples.SparkPi /usr/local/src/spark/examples/jars/spark-examples_2.12-3.1.1.jar 100</span><br></pre></td></tr></table></figure></li>
+<li>spark集群模式（spark集群需启动，hadoop无需启动）</li>
+<li>建议先用这个因为不用启动hadoop<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">spark-submit --master spark://master:7077 --class org.apache.spark.examples.SparkPi /usr/local/src/spark/examples/jars/spark-examples_2.12-3.1.1.jar 100</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">运行的输出结果类似于Pi is roughly 3.142xxxxxxxxx就对了，比赛截图需要前后多几行。</span><br><span class="line">补充说明：运行spark/bin目录下的spark-shell可以进入spark的命令行。</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/spark/2.jpg" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h1 id="安装flume"><a href="#安装flume" class="headerlink" title="安装flume"></a>安装flume</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>进入&#x2F;Mysoft解压flume 并 重命名<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -xzvf apache-flume-1.9.0-bin.tar.gz -C /usr/local/src/</span><br><span class="line">cd /usr/local/src</span><br><span class="line">mv apache-flume-1.9.0-bin flume</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h2 id="添加系统变量-7"><a href="#添加系统变量-7" class="headerlink" title="添加系统变量"></a>添加系统变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用vi &#x2F;root&#x2F;.bash_profile</li>
+<li>[键盘Shift+G处于最底部、键盘O回车一行] 末尾处添加<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#flume</span><br><span class="line">export FLUME_HOME=/usr/local/src/flume</span><br><span class="line">export PATH=$PATH:$FLUME_HOME/bin</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h2 id="接下来配置采集器内容-配置文件都放在flume-x2F-conf目录里-新建port-conf和file-conf"><a href="#接下来配置采集器内容-配置文件都放在flume-x2F-conf目录里-新建port-conf和file-conf" class="headerlink" title="接下来配置采集器内容 配置文件都放在flume&#x2F;conf目录里 新建port.conf和file.conf"></a>接下来配置采集器内容 配置文件都放在flume&#x2F;conf目录里 新建port.conf和file.conf</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">touch port.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">touch file.conf</span><br></pre></td></tr></table></figure>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://dl.shenyi.ink/?f=/big_data/flume/port.conf">https://dl.shenyi.ink/?f=/big_data/flume/port.conf</a></li>
+<li><a target="_blank" rel="noopener" href="https://dl.shenyi.ink/?f=/big_data/flume/port.conf">https://dl.shenyi.ink/?f=/big_data/flume/port.conf</a></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="启动flume测试"><a href="#启动flume测试" class="headerlink" title="启动flume测试"></a>启动flume测试</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li><p>测试网络监听(直接复制即可)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flume-ng agent -c conf -f /usr/local/src/flume/conf/port.conf --name a1 -Dflume.root.logger=INFO,console</span><br></pre></td></tr></table></figure>
+<ol>
+<li>然后去另外两台机子输入：yum install -y nc</li>
+<li>之后输入：nc master 18888</li>
+<li>最后退出直接Ctrl+C即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">从任意一台机器，用nc连接到master的18888端口：nc master 18888</span><br><span class="line"></span><br><span class="line">然后随便输入一些东西回车，看master的flume上是否有收到数据</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>测试文件变化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flume-ng agent -c conf -f /usr/local/src/flume/conf/file.conf --name a2 -Dflume.root.logger=INFO,console</span><br></pre></td></tr></table></figure>
+<ol>
+<li>再开一个ssh链接到master，运行echo “test” &gt;&gt; &#x2F;tmp&#x2F;test.txt 看看flume上是否有检测到变化<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo &quot;test&quot; &gt;&gt; /tmp/test.txt</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><ol>
+<li>slave1输入的<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/flume/1.jpg" alt="OIP _3_.jpg"></li>
+<li>master看到的<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/flume/2.jpg" alt="OIP _3_.jpg"></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+
+<h1 id="安装kafka"><a href="#安装kafka" class="headerlink" title="安装kafka"></a>安装kafka</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>进入&#x2F;Mysoft解压kafka 并 重命名<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -xzvf kafka_2.12-2.4.1.tgz -C /usr/local/src/</span><br><span class="line">cd /usr/local/src/</span><br><span class="line">mv kafka_2.12-2.4.1/ kafka</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="添加系统变量-8"><a href="#添加系统变量-8" class="headerlink" title="添加系统变量"></a>添加系统变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用vi &#x2F;root&#x2F;.bash_profile</li>
+<li>[键盘Shift+G处于最底部、键盘O回车一行] 末尾处添加<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#kafka</span><br><span class="line">export KAFKA_HOME=/usr/local/src/kafka</span><br><span class="line">export PATH=$PATH:$KAFKA_HOME/bin</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h2 id="刷新环境变量-5"><a href="#刷新环境变量-5" class="headerlink" title="刷新环境变量"></a>刷新环境变量</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用source &#x2F;root&#x2F;.bash_profile</li>
+<li>或者. &#x2F;root&#x2F;.bash_profile 即可刷新系统变量使其生效</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="进入kafka下config目录中-编辑server-properties-（master-slave1-slave2-都要编辑）"><a href="#进入kafka下config目录中-编辑server-properties-（master-slave1-slave2-都要编辑）" class="headerlink" title="进入kafka下config目录中 编辑server.properties （master slave1 slave2 都要编辑）"></a>进入kafka下config目录中 编辑server.properties （master slave1 slave2 都要编辑）</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>server.properties （有的直接改，没有的新增）<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">touch server.properties</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">broker.id=1 (master是1，slave1是2，slave2是3)</span><br><span class="line">hostname=172.16.x.x（分别是各个机器的IP）</span><br><span class="line">zookeeper.connect=master:2181,slave1:2181,slave2:2181</span><br><span class="line">listeners=PLAINTEXT://0.0.0.0:9092</span><br><span class="line">advertised.listeners=PLAINTEXT://172.16.100.1:9092（分别是各个机器的IP）</span><br><span class="line">advertised.host.name=master（分别是各个机器的机器名）</span><br></pre></td></tr></table></figure></li>
+<li>如果有一些没有的话直接就复制即可</li>
+<li>第三个和第四个不用修改，记得要对应每一台机子的ip以及其他配置</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><ol>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/kafka/1.jpg" alt="OIP _3_.jpg"></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="将配置好的kafka和环境变量-scp到slave1和slave2"><a href="#将配置好的kafka和环境变量-scp到slave1和slave2" class="headerlink" title="将配置好的kafka和环境变量 scp到slave1和slave2"></a>将配置好的kafka和环境变量 scp到slave1和slave2</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">scp -r /usr/local/src/kafka/ slave1:/usr/local/src</span><br><span class="line">scp -r /usr/local/src/kafka/ slave2:/usr/local/src</span><br><span class="line">scp /root/.bash_profile slave1:/root/</span><br><span class="line">scp /root/.bash_profile slave2:/root/</span><br></pre></td></tr></table></figure>
+<ol>
+<li>分别对应修改两台slave上的server.properties。</li>
+<li>cd &#x2F;usr&#x2F;local&#x2F;src&#x2F;kafka&#x2F;config&#x2F;</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>接下来可以启动kafka（确保ZOOKEEPER正常运行了，三台机器都要运行）：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">kafka-server-start.sh -daemon /usr/local/src/kafka/config/server.properties</span><br></pre></td></tr></table></figure></li>
+<li>启动后，运行jps，查看是否有kafka和QuorumPeerMain（这个是ZOOKEEPER的进程）</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/kafka/2.jpg" alt="OIP _3_.jpg"></p><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h1 id="安装Clickhouse"><a href="#安装Clickhouse" class="headerlink" title="安装Clickhouse"></a>安装Clickhouse</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>进入&#x2F;Mysoft解压Clickhouse 并 重命名<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zxvf clickhouse-common-static-21.9.6.24.tgz -C /tmp</span><br><span class="line">tar -zxvf clickhouse-client-21.9.6.24.tgz -C /tmp</span><br><span class="line">tar -zxvf clickhouse-server-21.9.6.24.tgz -C /tmp</span><br></pre></td></tr></table></figure></li>
+<li>依次安装common、client、server<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sh /tmp/clickhouse-common-static-21.9.6.24/install/doinst.sh</span><br><span class="line">sh /tmp/clickhouse-client-21.9.6.24/install/doinst.sh</span><br><span class="line">sh /tmp/clickhouse-server-21.9.6.24/install/doinst.sh</span><br></pre></td></tr></table></figure></li>
+<li>前两个运行没有任何提示就是成功了<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">第三个sh的，运行后会询问default user的密码，按比赛要求输入密码。接着会询问是否允许远</span><br><span class="line">程连接，输入y。</span><br><span class="line">密码设置看个人</span><br><span class="line"></span><br><span class="line">安装完成后，为了后续配置方便，给相关文件夹777权限。</span><br><span class="line">chmod -R 777 /var/lib/clickhouse/ /var/log/clickhouse-server/ /etc/clickhouse-server/ /etc/clickhouse-client/</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+
+<h2 id="需要修改配置-特别是要改端口（要不会和hadoop的9000端口冲突）"><a href="#需要修改配置-特别是要改端口（要不会和hadoop的9000端口冲突）" class="headerlink" title="需要修改配置 特别是要改端口（要不会和hadoop的9000端口冲突）"></a>需要修改配置 特别是要改端口（要不会和hadoop的9000端口冲突）</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>vi &#x2F;etc&#x2F;clickhouse-server&#x2F;config.xml</li>
+<li>config.xml （直接改对应行，去掉注释，修改内容）<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;listen_host&gt;::&lt;/listen_host&gt;</span><br><span class="line">&lt;timezone&gt;Asia/Shanghai&lt;/timezone&gt;</span><br><span class="line">&lt;tcp_port&gt;9002&lt;/tcp_port&gt;</span><br></pre></td></tr></table></figure></li>
+<li>可以直接在vi里用&#x2F;查找</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><ol>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/clickhouse/1.jpg" alt="OIP _3_.jpg"></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h2 id="启动-1"><a href="#启动-1" class="headerlink" title="启动"></a>启动</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>systemctl enable clickhouse-server</li>
+<li>systemctl start clickhouse-server</li>
+<li>没有任何东西出现就OK了</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h2 id="检查-4"><a href="#检查-4" class="headerlink" title="检查"></a>检查</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>启动后，使用<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">clickhouse-client -h 172.16.100.1 --port 9002 -u default --password 你设置的密码</span><br></pre></td></tr></table></figure></li>
+<li>连接到数据库，出现master：就是成功了 可以输入show databases;查看数据库</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><ol>
+<li><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/clickhouse/2.jpg" alt="OIP _3_.jpg"></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="特殊情况-如果你不记得密码了"><a href="#特殊情况-如果你不记得密码了" class="headerlink" title="特殊情况 如果你不记得密码了"></a>特殊情况 如果你不记得密码了</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">clickhouse 用户信息 在配置文件/etc/clickhouse-server/users.xml里</span><br><span class="line">可以通过修改这个配置文件 修改密码</span><br><span class="line">clickhouse默认密码加密传输，所以我们要设置密文，使用加密算法sha256</span><br><span class="line">密码生成可以使用命令</span><br></pre></td></tr></table></figure>
+<ol>
+<li>echo -n 密码 | sha256sum | tr -d ‘-‘</li>
+<li>如 echo -n a123b456 | sha256sum | tr -d ‘-‘</li>
+<li>则会输 5b28b1d5ee792ea157182cfd12caec6c31cb1a689f21b4a9b71bc7dc5c057223</li>
+<li>使用vi命令修改文件 vi &#x2F;etc&#x2F;clickhouse-server&#x2F;users.xml<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用/找到密码位置，注释掉，添加我们的新密码</span><br><span class="line">&lt;password_sha256_hex&gt;5b28b1d5ee792ea157182cfd12caec6c31cb1a689f21b4a9b71bc7dc5c057223&lt;/password_sha256_hex&gt;</span><br><span class="line"></span><br><span class="line">如果你记得密码 这一步可以忘掉</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h1 id="安装redis"><a href="#安装redis" class="headerlink" title="安装redis"></a>安装redis</h1><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>比赛不涉及redis安装</li>
+<li>环境准备<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -xzvf redis-6.2.6.tar.gz -C /usr/local/src/</span><br><span class="line">cd /usr/local/src/</span><br><span class="line">mv redis-6.2.6/ redis</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="接着安装编译环境"><a href="#接着安装编译环境" class="headerlink" title="接着安装编译环境"></a>接着安装编译环境</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y gcc automake autoconf libtool make</span><br></pre></td></tr></table></figure><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>这两条可直接复制即可<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd redis/src</span><br><span class="line">make PREFIX=/usr/redis install</span><br><span class="line">完成后redis就编译好了 位于cd /usr/redis/bin</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="启动-2"><a href="#启动-2" class="headerlink" title="启动"></a>启动</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>使用默认配置文件即可：<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/redis/bin/redis-server /usr/local/src/redis/redis.conf &gt;&gt; /dev/null &amp;</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+
+<h2 id="检查-5"><a href="#检查-5" class="headerlink" title="检查"></a>检查</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>启动后，使用连接测试即可</li>
+<li>.&#x2F;redis-cli</li>
+<li>出现127.0.0.1:6379&gt;即为成功</li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div>
+
+<h2 id="如何在master直接启动"><a href="#如何在master直接启动" class="headerlink" title="如何在master直接启动"></a>如何在master直接启动</h2><div class="tabs" id="源码"><ul class="nav-tabs"><li class="tab active"><button type="button" data-href="#源码-1">源码</button></li><li class="tab"><button type="button" data-href="#源码-2">渲染演示</button></li></ul><div class="tab-contents"><div class="tab-item-content active" id="源码-1"><ol>
+<li>先回到master，然后进行：<ol>
+<li>vi &#x2F;root&#x2F;.bash_profile 配置一下<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#redis</span><br><span class="line">export REDIS_HOME=/usr/redis/</span><br><span class="line">export PATH=$PATH:$REDIS_HOME/bin</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li>保存出来刷新一下:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">. /root/.bash_profile</span><br></pre></td></tr></table></figure></li>
+<li>然后直接就可以启动了:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">redis-cli</span><br></pre></td></tr></table></figure></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div><div class="tab-item-content" id="源码-2"><p>出现127.0.0.1:6379&gt;即为成功</p>
+<ol>
+<li>这个是在这个目录下master启动<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../img/big_data/phase1/redis/1.jpg" alt="OIP _3_.jpg"></li>
+</ol><button type="button" class="tab-to-top" aria-label="scroll to top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div></div></article><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2023/09/23/hadoop-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=hadoop-服务安装&amp;url=http://example.com/2023/09/23/hadoop-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/&amp;pic=https://img02.anheyu.com/adminuploads/1/2022/09/05/6315e1453758c.webp!cover" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/hadoop-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>hadoop-服务安装<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/img/default_cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://npm.elemecdn.com/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><div class="post-copyright"><i class="anzhiyufont anzhiyu-icon-copyright"></i><div class="post-copyright__author"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2023/09/23/hadoop-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">原创</a><a class="post-copyright-title"><span>hadoop-服务安装</span></a></div><div class="post-copyright-info-box"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"></span><a class="link" href="http://example.com">MENGLAN</a></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a class="link" href="http://example.com/2023/09/23/hadoop-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/">http://example.com/2023/09/23/hadoop-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/</a></span><span class="copy-button" onclick="rm.copyPageUrl('http://example.com/2023/09/23/hadoop-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/)'"><i class="anzhiyufont anzhiyu-icon-copy"></i></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">MENGLAN</a>！</span></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/09/11/%E7%B2%BE%E7%81%B5%E5%9B%BE/"><img class="prev-cover" src="https://bu.dusays.com/2023/04/09/64329399db2e1.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">精灵图(sprite)</div></div></a></div><div class="next-post pull-right"><a href="/2023/09/25/Spark%E7%BC%96%E5%86%99-%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-1/"><img class="next-cover" src="https://img02.anheyu.com/adminuploads/1/2022/09/05/6315e14929f74.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Spark数据抽取1</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author-info-top"> <div class="card-info-avatar"></div></div><div class="author-info__sayhi" id="author-info__sayhi"></div><h1 class="author-info__name">MENGLAN</h1><div class="author-info__description">生活明朗, 万物可爱</div><div class="banner-button-group"><a class="banner-button" onclick="pjax.loadUrl(&quot;/about/&quot;)"><span class="banner-button-text">了解更多</span><i class="anzhiyufont anzhiyu-icon-arrow-circle-right" style="font-size: 1.5rem"></i></a></div><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/xiaochen92013" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=2045136585@qq.com" target="_blank" title="Email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="social-icon faa-parent animated-hover" href="/atom.xml" target="_blank" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/1269681117" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="social-icon faa-parent animated-hover" href="tencent://Message/?Uin=2045136585&amp;amp;websiteName=local.edu.com:8888=&amp;amp;Menu=yes" target="_blank" title="QQ"><i class="anzhiyufont anzhiyu-icon-qq"></i></a></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">前置环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D%EF%BC%88%E4%B8%89%E5%8F%B0%EF%BC%8C%E5%88%86%E5%88%AB%E6%98%AFmaster%EF%BC%8Cslave1-slave2%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">修改主机名（三台，分别是master，slave1,slave2）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8master%E7%9A%84-x2F-etc-x2F-hosts%E4%B8%AD%E9%85%8D%E7%BD%AE%E4%B8%BB%E6%9C%BA%E5%90%8D%E5%92%8CIP%E8%A7%A3%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">在master的&#x2F;etc&#x2F;hosts中配置主机名和IP解析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">配置免密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85JDk"><span class="toc-number">3.</span> <span class="toc-text">安装JDk</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F"><span class="toc-number">3.1.</span> <span class="toc-text">添加系统变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E6%96%B0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">3.2.</span> <span class="toc-text">刷新环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E5%AE%89%E8%A3%85"><span class="toc-number">3.3.</span> <span class="toc-text">检查安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86jdk%E3%80%81%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E3%80%81hosts%E6%96%87%E4%BB%B6%E6%8B%B7%E8%B4%9D%E5%88%B0%E4%B8%A4%E5%8F%B0slave%E4%B8%AD"><span class="toc-number">3.4.</span> <span class="toc-text">将jdk、环境变量、hosts文件拷贝到两台slave中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%88%90%E5%90%8E%E5%88%B0slave1%E3%80%81slave2%E6%A3%80%E6%9F%A5%E4%B8%8Bjdk%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">3.5.</span> <span class="toc-text">完成后到slave1、slave2检查下jdk的安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Hadoop"><span class="toc-number">4.</span> <span class="toc-text">安装Hadoop</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F-1"><span class="toc-number">4.1.</span> <span class="toc-text">添加系统变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E6%96%B0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-1"><span class="toc-number">4.2.</span> <span class="toc-text">刷新环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E5%AE%89%E8%A3%85-1"><span class="toc-number">4.3.</span> <span class="toc-text">检查安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%BE%91hadoop%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">4.4.</span> <span class="toc-text">编辑hadoop配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%8Ahadoop%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%BC%A0%E8%BE%93%E5%88%B0%E4%B8%A4%E4%B8%AAslave"><span class="toc-number">4.5.</span> <span class="toc-text">把hadoop和环境变量传输到两个slave</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E4%B8%A4%E5%8F%B0slave%E6%9C%BA%E5%99%A8%E7%9A%84%E5%8F%98%E9%87%8F%E5%88%B7%E6%96%B0"><span class="toc-number">4.6.</span> <span class="toc-text">将两台slave机器的变量刷新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96hdfs%EF%BC%88master%EF%BC%89"><span class="toc-number">4.7.</span> <span class="toc-text">格式化hdfs（master）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8Chadoop%EF%BC%88master%EF%BC%89"><span class="toc-number">4.8.</span> <span class="toc-text">运行hadoop（master）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85MySQL"><span class="toc-number">5.</span> <span class="toc-text">安装MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%85MySQL"><span class="toc-number">5.1.</span> <span class="toc-text">使用yum安装MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8mysql%E6%9C%8D%E5%8A%A1"><span class="toc-number">5.2.</span> <span class="toc-text">启动mysql服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96mysql%E5%88%9D%E5%A7%8B%E5%AF%86%E7%A0%81"><span class="toc-number">5.3.</span> <span class="toc-text">获取mysql初始密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AF%86%E7%A0%81"><span class="toc-number">5.4.</span> <span class="toc-text">初始化密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5mysql%E8%AE%BE%E7%BD%AE%E6%9D%83%E9%99%90"><span class="toc-number">5.5.</span> <span class="toc-text">进入mysql设置权限</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85hive"><span class="toc-number">6.</span> <span class="toc-text">安装hive</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5Mysoft%E8%A7%A3%E5%8E%8Bhive"><span class="toc-number">6.1.</span> <span class="toc-text">进入Mysoft解压hive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F-2"><span class="toc-number">6.2.</span> <span class="toc-text">添加系统变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E6%96%B0%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F"><span class="toc-number">6.3.</span> <span class="toc-text">刷新系统变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8hive%E7%9A%84conf%E7%9B%AE%E5%BD%95%E4%B8%8B-%E6%96%B0%E5%BB%BAhive-site-xml"><span class="toc-number">6.4.</span> <span class="toc-text">在hive的conf目录下 新建hive-site.xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86java%E8%BF%9E%E6%8E%A5mysql%E7%9A%84%E9%A9%B1%E5%8A%A8%E5%8C%85%E6%8B%B7%E8%B4%9D%E5%88%B0hive%E4%B8%8B%E7%9A%84lib%E7%9B%AE%E5%BD%95%E4%B8%8B"><span class="toc-number">6.5.</span> <span class="toc-text">将java连接mysql的驱动包拷贝到hive下的lib目录下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86java%E8%BF%9E%E6%8E%A5mysql%E7%9A%84%E9%A9%B1%E5%8A%A8%E5%8C%85%E6%8B%B7%E8%B4%9D%E5%88%B0hive%E4%B8%8B%E7%9A%84lib%E7%9B%AE%E5%BD%95%E4%B8%8B-1"><span class="toc-number">6.6.</span> <span class="toc-text">将java连接mysql的驱动包拷贝到hive下的lib目录下</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9hive%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">6.7.</span> <span class="toc-text">修改hive配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%8Ahive%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%BC%A0%E8%BE%93%E5%88%B0%E4%B8%A4%E4%B8%AAslave"><span class="toc-number">6.8.</span> <span class="toc-text">把hive和环境变量传输到两个slave</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96mysql%E7%9A%84%E6%95%B0%E6%8D%AE%E6%9E%B6%E6%9E%84-%E6%9C%80%E5%90%8E%E6%88%90%E5%8A%9F%E7%9A%84%E6%95%88%E6%9E%9C"><span class="toc-number">6.9.</span> <span class="toc-text">初始化mysql的数据架构 最后成功的效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%A1%E9%AA%8Chive%E5%AE%89%E8%A3%85%EF%BC%88%E7%A1%AE%E4%BF%9Dhadoop%E5%B7%B2%E7%BB%8F%E5%90%AF%E5%8A%A8%EF%BC%89"><span class="toc-number">6.10.</span> <span class="toc-text">校验hive安装（确保hadoop已经启动）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85zookeeper"><span class="toc-number">7.</span> <span class="toc-text">安装zookeeper</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F-3"><span class="toc-number">7.1.</span> <span class="toc-text">添加系统变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E6%96%B0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-2"><span class="toc-number">7.2.</span> <span class="toc-text">刷新环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5zookeeper%E7%9A%84conf%E4%B8%8B%E6%94%B9%E9%85%8D%E7%BD%AE"><span class="toc-number">7.3.</span> <span class="toc-text">进入zookeeper的conf下改配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E5%BA%94%E7%9A%84%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95-%E5%88%9D%E5%A7%8B%E5%8C%96id"><span class="toc-number">7.4.</span> <span class="toc-text">创建对应的数据目录 初始化id</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E6%98%AF%E9%83%BD%E6%98%AF%E7%9B%B4%E6%8E%A5%E9%94%AE%E5%85%A5%E5%8D%B3%E5%8F%AF"><span class="toc-number">7.4.1.</span> <span class="toc-text">这是都是直接键入即可</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E9%85%8D%E7%BD%AE%E5%A5%BD%E7%9A%84ZOOKEEPER%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-scp%E5%88%B0slave1%E5%92%8Cslave2"><span class="toc-number">7.5.</span> <span class="toc-text">将配置好的ZOOKEEPER和环境变量 scp到slave1和slave2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E5%AF%B9%E5%BA%94%E6%9C%BA%E5%99%A8%E7%9A%84myid%E6%96%87%E4%BB%B6-%E6%94%B9%E4%B8%BA2%E5%92%8C3"><span class="toc-number">7.6.</span> <span class="toc-text">修改对应机器的myid文件 改为2和3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E5%8F%B0%E6%9C%BA%E5%99%A8%E5%88%86%E5%88%AB%E8%BF%90%E8%A1%8C-zkServer-sh-start"><span class="toc-number">7.7.</span> <span class="toc-text">三台机器分别运行 zkServer.sh start</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5"><span class="toc-number">7.8.</span> <span class="toc-text">检查</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85hbase"><span class="toc-number">8.</span> <span class="toc-text">安装hbase</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F-4"><span class="toc-number">8.1.</span> <span class="toc-text">添加系统变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E6%96%B0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-3"><span class="toc-number">8.2.</span> <span class="toc-text">刷新环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5hbase-x2F-conf%E7%9B%AE%E5%BD%95-%E5%88%86%E5%88%AB%E4%BF%AE%E6%94%B9hbase-env-sh%E5%92%8Chbase-site-xml"><span class="toc-number">8.3.</span> <span class="toc-text">进入hbase&#x2F;conf目录 分别修改hbase-env.sh和hbase-site.xml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9regionservers-%E9%85%8D%E7%BD%AE%E9%9B%86%E7%BE%A4"><span class="toc-number">8.4.</span> <span class="toc-text">修改regionservers 配置集群</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E9%85%8D%E7%BD%AE%E5%A5%BD%E7%9A%84HBase%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-scp%E5%88%B0slave1%E5%92%8Cslave2"><span class="toc-number">8.5.</span> <span class="toc-text">将配置好的HBase和环境变量 scp到slave1和slave2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-number">8.6.</span> <span class="toc-text">启动服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5-1"><span class="toc-number">8.7.</span> <span class="toc-text">检查</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85flink"><span class="toc-number">9.</span> <span class="toc-text">安装flink</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F-5"><span class="toc-number">9.1.</span> <span class="toc-text">添加系统变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E6%96%B0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-4"><span class="toc-number">9.2.</span> <span class="toc-text">刷新环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5flink-x2F-conf%E7%9B%AE%E5%BD%95%E4%B8%8B-%E7%BC%96%E8%BE%91flink-conf-yaml%E5%92%8Cworkers"><span class="toc-number">9.3.</span> <span class="toc-text">进入flink&#x2F;conf目录下 编辑flink-conf.yaml和workers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E9%85%8D%E7%BD%AE%E5%A5%BD%E7%9A%84flink%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-scp%E5%88%B0slave1%E5%92%8Cslave2"><span class="toc-number">9.4.</span> <span class="toc-text">将配置好的flink和环境变量 scp到slave1和slave2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C"><span class="toc-number">9.5.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5-2"><span class="toc-number">9.6.</span> <span class="toc-text">检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%91%E4%BB%BB%E5%8A%A1"><span class="toc-number">9.7.</span> <span class="toc-text">跑任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E6%98%AF%E5%87%BA%E9%94%99%E4%BA%86%E4%B9%9F%E4%B8%8D%E7%AE%A1%E5%AE%83"><span class="toc-number">9.8.</span> <span class="toc-text">要是出错了也不管它</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85spark"><span class="toc-number">10.</span> <span class="toc-text">安装spark</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F-6"><span class="toc-number">10.1.</span> <span class="toc-text">添加系统变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5spark%E7%9A%84conf%E7%9B%AE%E5%BD%95%E4%B8%8B-%E7%BC%96%E8%BE%91spark-env-sh%E5%92%8Cworkers"><span class="toc-number">10.2.</span> <span class="toc-text">进入spark的conf目录下 编辑spark-env.sh和workers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cp%E5%B0%86hive%E7%9A%84conf%E4%B8%8B%E9%9D%A2%E7%9A%84hive-site-xml%E6%8B%B7%E5%88%B0spark%E7%9A%84conf%E4%B8%8B%E9%9D%A2"><span class="toc-number">10.3.</span> <span class="toc-text">cp将hive的conf下面的hive-site.xml拷到spark的conf下面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%B7%E8%B4%9D"><span class="toc-number">10.4.</span> <span class="toc-text">拷贝</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E9%85%8D%E7%BD%AE%E5%A5%BD%E7%9A%84spark%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-scp%E5%88%B0slave1%E5%92%8Cslave2"><span class="toc-number">10.5.</span> <span class="toc-text">将配置好的spark和环境变量 scp到slave1和slave2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C-1"><span class="toc-number">10.6.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5-3"><span class="toc-number">10.7.</span> <span class="toc-text">检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%91%E4%BB%BB%E5%8A%A1-1"><span class="toc-number">10.8.</span> <span class="toc-text">跑任务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E7%9D%80%E9%9C%80%E8%A6%81%E8%B7%91%E5%86%85%E7%BD%AE%E6%B5%8B%E8%AF%95%E6%A1%88%E4%BE%8B-%EF%BC%88%E6%AF%94%E8%B5%9B%E9%9C%80%E8%A6%81%E6%88%AA%E5%9B%BE%EF%BC%89"><span class="toc-number">10.8.1.</span> <span class="toc-text">接着需要跑内置测试案例 （比赛需要截图）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85flume"><span class="toc-number">11.</span> <span class="toc-text">安装flume</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F-7"><span class="toc-number">11.1.</span> <span class="toc-text">添加系统变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E9%85%8D%E7%BD%AE%E9%87%87%E9%9B%86%E5%99%A8%E5%86%85%E5%AE%B9-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%83%BD%E6%94%BE%E5%9C%A8flume-x2F-conf%E7%9B%AE%E5%BD%95%E9%87%8C-%E6%96%B0%E5%BB%BAport-conf%E5%92%8Cfile-conf"><span class="toc-number">11.2.</span> <span class="toc-text">接下来配置采集器内容 配置文件都放在flume&#x2F;conf目录里 新建port.conf和file.conf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8flume%E6%B5%8B%E8%AF%95"><span class="toc-number">11.3.</span> <span class="toc-text">启动flume测试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85kafka"><span class="toc-number">12.</span> <span class="toc-text">安装kafka</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E5%8F%98%E9%87%8F-8"><span class="toc-number">12.1.</span> <span class="toc-text">添加系统变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B7%E6%96%B0%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-5"><span class="toc-number">12.2.</span> <span class="toc-text">刷新环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5kafka%E4%B8%8Bconfig%E7%9B%AE%E5%BD%95%E4%B8%AD-%E7%BC%96%E8%BE%91server-properties-%EF%BC%88master-slave1-slave2-%E9%83%BD%E8%A6%81%E7%BC%96%E8%BE%91%EF%BC%89"><span class="toc-number">12.3.</span> <span class="toc-text">进入kafka下config目录中 编辑server.properties （master slave1 slave2 都要编辑）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86%E9%85%8D%E7%BD%AE%E5%A5%BD%E7%9A%84kafka%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-scp%E5%88%B0slave1%E5%92%8Cslave2"><span class="toc-number">12.4.</span> <span class="toc-text">将配置好的kafka和环境变量 scp到slave1和slave2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8"><span class="toc-number">12.5.</span> <span class="toc-text">启动</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Clickhouse"><span class="toc-number">13.</span> <span class="toc-text">安装Clickhouse</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE-%E7%89%B9%E5%88%AB%E6%98%AF%E8%A6%81%E6%94%B9%E7%AB%AF%E5%8F%A3%EF%BC%88%E8%A6%81%E4%B8%8D%E4%BC%9A%E5%92%8Chadoop%E7%9A%849000%E7%AB%AF%E5%8F%A3%E5%86%B2%E7%AA%81%EF%BC%89"><span class="toc-number">13.1.</span> <span class="toc-text">需要修改配置 特别是要改端口（要不会和hadoop的9000端口冲突）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8-1"><span class="toc-number">13.2.</span> <span class="toc-text">启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5-4"><span class="toc-number">13.3.</span> <span class="toc-text">检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%83%85%E5%86%B5-%E5%A6%82%E6%9E%9C%E4%BD%A0%E4%B8%8D%E8%AE%B0%E5%BE%97%E5%AF%86%E7%A0%81%E4%BA%86"><span class="toc-number">13.4.</span> <span class="toc-text">特殊情况 如果你不记得密码了</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85redis"><span class="toc-number">14.</span> <span class="toc-text">安装redis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E7%9D%80%E5%AE%89%E8%A3%85%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83"><span class="toc-number">14.1.</span> <span class="toc-text">接着安装编译环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-number">14.2.</span> <span class="toc-text">编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8-2"><span class="toc-number">14.3.</span> <span class="toc-text">启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5-5"><span class="toc-number">14.4.</span> <span class="toc-text">检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%9C%A8master%E7%9B%B4%E6%8E%A5%E5%90%AF%E5%8A%A8"><span class="toc-number">14.5.</span> <span class="toc-text">如何在master直接启动</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/09/07/Linux%E5%9F%BA%E7%A1%80/" title="Linux基础"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux基础"/></a><div class="content"><a class="title" href="/2024/09/07/Linux%E5%9F%BA%E7%A1%80/" title="Linux基础">Linux基础</a><time datetime="2024-09-07T07:42:25.000Z" title="发表于 2024-09-07 15:42:25">2024-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/25/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E5%8D%81%E5%A5%97%E9%A2%98/" title="国赛题-第十套题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img02.anheyu.com/adminuploads/1/2022/09/05/6315e145c2d74.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="国赛题-第十套题"/></a><div class="content"><a class="title" href="/2024/01/25/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E5%8D%81%E5%A5%97%E9%A2%98/" title="国赛题-第十套题">国赛题-第十套题</a><time datetime="2024-01-25T08:00:08.000Z" title="发表于 2024-01-25 16:00:08">2024-01-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/24/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E5%85%AB%E5%A5%97%E9%A2%98/" title="国赛题-第八套题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img02.anheyu.com/adminuploads/1/2022/09/05/6315e145c2d74.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="国赛题-第八套题"/></a><div class="content"><a class="title" href="/2024/01/24/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E5%85%AB%E5%A5%97%E9%A2%98/" title="国赛题-第八套题">国赛题-第八套题</a><time datetime="2024-01-24T08:00:02.000Z" title="发表于 2024-01-24 16:00:02">2024-01-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/23/hadoop-hdfs%E5%91%BD%E4%BB%A4%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="hadoop-hdfs命令基本操作"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img02.anheyu.com/adminuploads/1/2022/09/05/6315e14929f74.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hadoop-hdfs命令基本操作"/></a><div class="content"><a class="title" href="/2024/01/23/hadoop-hdfs%E5%91%BD%E4%BB%A4%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" title="hadoop-hdfs命令基本操作">hadoop-hdfs命令基本操作</a><time datetime="2024-01-23T11:34:07.000Z" title="发表于 2024-01-23 19:34:07">2024-01-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/23/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E4%B8%83%E5%A5%97%E9%A2%98/" title="国赛题-第七套题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img02.anheyu.com/adminuploads/1/2022/09/15/6323395345502.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="国赛题-第七套题"/></a><div class="content"><a class="title" href="/2024/01/23/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E4%B8%83%E5%A5%97%E9%A2%98/" title="国赛题-第七套题">国赛题-第七套题</a><time datetime="2024-01-23T07:59:56.000Z" title="发表于 2024-01-23 15:59:56">2024-01-23</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By MENGLAN</div><div id="workboard"><img class="workSituationImg boardsign" src="/img/badge/小鹿-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v5.4.0"/></a><a class="github-badge" target="_blank" href="https://anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/badge/Theme-XiaoLu.svg" alt="本站使用AnZhiYu主题"/></a></p></div></footer></div></div></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://i.postimg.cc/850MfL1w/20231003002506.jpg"/><div class="loading-image-dot"></div><div id="loading-percentage">0%</div></div></div><script>const loadingPercentage = document.getElementById("loading-percentage");
+let loadingPercentageTimer = setInterval(function() {
+  var progressBar = document.querySelector(".pace-progress");
+  if (!progressBar) return
+  var currentValue = progressBar.getAttribute("data-progress-text");
+  if (currentValue !== loadingPercentage.textContent) {
+    loadingPercentage.textContent = currentValue;
+    if (currentValue === "100%") {
+      clearInterval(loadingPercentageTimer);
+    }
+  }
+}, 100);
+const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+    Pace.restart()
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/progress_bar/progress_bar.css"/><script async="async" src="https://npm.elemecdn.com/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div id="sidebar"><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.postimg.cc/850MfL1w/20231003002506.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">19</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">18</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child" style="left:-79px;"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child" style="left:-79px;"><li><a class="site-page child faa-parent animated-hover" href="/link/"><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child" style="left:-127px;"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/index.html"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child" style="left:-79px;"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="center-console" type="button" title="中控台"><i class="anzhiyufont anzhiyu-icon-fish"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><div id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()">播放音乐</div><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random"></meting-js></div><div id="console"><div class="close-btn" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-xmark" style="font-size: 35px;"></i></div><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="wechat" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="alipay" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments" onclick="anzhiyu.hideConsole()"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> <span>最新评论</span></span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags" onclick="anzhiyu.hideConsole()"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Echarts-%E5%8F%AF%E8%A7%86%E5%8C%96/" style="font-size: 1.05rem;">Echarts-可视化<sup>1</sup></a><a href="/tags/Linux%E5%9F%BA%E7%A1%80/" style="font-size: 1.05rem;">Linux基础<sup>1</sup></a><a href="/tags/Python-Request%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96/" style="font-size: 1.05rem;">Python-Request数据爬取<sup>1</sup></a><a href="/tags/Python-scrapy%E6%95%B0%E6%8D%AE%E7%88%AC%E5%8F%96/" style="font-size: 1.05rem;">Python-scrapy数据爬取<sup>1</sup></a><a href="/tags/Spark%E6%95%B0%E6%8D%AE%E6%8A%BD%E5%8F%961/" style="font-size: 1.05rem;">Spark数据抽取1<sup>1</sup></a><a href="/tags/Spark%E6%95%B0%E6%8D%AE%E6%8A%BD%E5%8F%962/" style="font-size: 1.05rem;">Spark数据抽取2<sup>1</sup></a><a href="/tags/Spark%E6%95%B0%E6%8D%AE%E6%8A%BD%E5%8F%963/" style="font-size: 1.05rem;">Spark数据抽取3<sup>1</sup></a><a href="/tags/Zoomit%E8%AF%AD%E6%B3%95/" style="font-size: 1.05rem;">Zoomit语法<sup>1</sup></a><a href="/tags/hadoop-hdfs%E5%91%BD%E4%BB%A4%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" style="font-size: 1.05rem;">hadoop-hdfs命令基本操作<sup>1</sup></a><a href="/tags/hadoop-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85/" style="font-size: 1.05rem;">hadoop-服务安装<sup>1</sup></a><a href="/tags/markdown%E6%95%99%E7%A8%8B%E5%86%99%E6%B3%95/" style="font-size: 1.05rem;">markdown教程写法<sup>1</sup></a><a href="/tags/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E4%B8%83%E5%A5%97%E9%A2%98/" style="font-size: 1.05rem;">国赛题-第七套题<sup>1</sup></a><a href="/tags/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E4%B8%89%E5%A5%97%E9%A2%98/" style="font-size: 1.05rem;">国赛题-第三套题<sup>1</sup></a><a href="/tags/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E4%BA%94%E5%A5%97%E9%A2%98/" style="font-size: 1.05rem;">国赛题-第五套题<sup>1</sup></a><a href="/tags/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E5%85%AB%E5%A5%97%E9%A2%98/" style="font-size: 1.05rem;">国赛题-第八套题<sup>1</sup></a><a href="/tags/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E5%85%AD%E5%A5%97%E9%A2%98/" style="font-size: 1.05rem;">国赛题-第六套题<sup>1</sup></a><a href="/tags/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E5%8D%81%E5%A5%97%E9%A2%98/" style="font-size: 1.05rem;">国赛题-第十套题<sup>1</sup></a><a href="/tags/%E5%9B%BD%E8%B5%9B%E9%A2%98-%E7%AC%AC%E5%9B%9B%E5%A5%97%E9%A2%98/" style="font-size: 1.05rem;">国赛题-第四套题<sup>1</sup></a><a href="/tags/%E7%B2%BE%E7%81%B5%E5%9B%BE/" style="font-size: 1.05rem;">精灵图<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history" onclick="anzhiyu.hideConsole()"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">一月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">8</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" onclick="anzhiyu.switchDarkMode()" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="anzhiyufont anzhiyu-icon-xmark"></i></button></nav><div class="is-center" id="loading-database"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-pulse-icon"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script><div><script src="https://npm.elemecdn.com/hexo-theme-anzhiyu@1.3.1/source/js/utils.js"></script><script src="https://npm.elemecdn.com/hexo-theme-anzhiyu@1.3.1/source/js/main.js"></script><script src="https://npm.elemecdn.com/hexo-theme-anzhiyu@1.3.1/source/js/tw_cn.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui@4.0.31/dist/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/instant.page@5.1.1/instantpage.js" type="module"></script><script src="https://npm.elemecdn.com/vanilla-lazyload@17.3.1/dist/lazyload.iife.min.js"></script><script src="https://npm.elemecdn.com/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("09/07/2024 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 1.3.1",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#3b70fc",
+      "",
+      "color:#3b70fc",
+      "color:#3b70fc",
+      "",
+      "color:#3b70fc",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 MENGLAN 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("09/07/2024 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      img.src = "/img/badge/小鹿-下班啦.svg";
+      img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+      img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><script src="https://npm.elemecdn.com/hexo-theme-anzhiyu@1.3.1/source/js/search/local-search.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "visitor@anheyu.com";</script><script>//动态标题
+let leaveTitle = 'w(ﾟДﾟ)w 不要走！再看看嘛！';
+let backTitle = '♪(^∇^*)欢迎肥来！';
+let OriginTitile = document.title
+let titleTime
+document.addEventListener('visibilitychange', function () {
+  if (document.hidden) {
+    //离开当前页面时标签显示内容
+    document.title = leaveTitle
+    clearTimeout(titleTime)
+  } else {
+    //返回当前页面时标签显示内容
+    document.title = backTitle + OriginTitile
+    //两秒后变回正常标题
+    titleTime = setTimeout(function () {
+      document.title = OriginTitile
+    }, 2000)
+  }
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script>// 初始化函数
+let rm = {};
+
+//禁止图片与超链接拖拽
+let aElements = document.getElementsByTagName("a");
+for (let i = 0; i < aElements.length; i++) {
+  aElements[i].setAttribute("draggable", "false");
+  let imgElements = aElements[i].getElementsByTagName("img");
+  for (let j = 0; j < imgElements.length; j++) {
+    imgElements[j].setAttribute("draggable", "false");
+  }
+}
+
+// 显示菜单
+rm.showRightMenu = function (isTrue, x = 0, y = 0) {
+  console.info(x, y)
+  let rightMenu = document.getElementById("rightMenu");
+  rightMenu.style.top = x + "px";
+  rightMenu.style.left = y + "px";
+  if (isTrue) {
+    rightMenu.style.display = "block";
+    stopMaskScroll();
+  } else {
+    rightMenu.style.display = "none";
+  }
+};
+
+// 隐藏菜单
+rm.hideRightMenu = function () {
+  rm.showRightMenu(false);
+  let rightMenuMask = document.querySelector("#rightmenu-mask");
+  rightMenuMask.style.display = "none";
+};
+
+// 尺寸
+let rmWidth = document.getElementById("rightMenu").offsetWidth;
+let rmHeight = document.getElementById("rightMenu").offsetHeight;
+
+// 重新定义尺寸
+rm.reloadrmSize = function () {
+  rightMenu.style.visibility = "hidden";
+  rightMenu.style.display = "block";
+  // 获取宽度和高度
+  rmWidth = document.getElementById("rightMenu").offsetWidth;
+  rmHeight = document.getElementById("rightMenu").offsetHeight;
+  rightMenu.style.visibility = "visible";
+};
+
+// 获取点击的href
+let domhref = "";
+let domImgSrc = "";
+let globalEvent = null;
+
+var oncontextmenuFunction = function (event) {
+  if (document.body.clientWidth > 768) {
+    let pageX = event.clientX + 10; //加10是为了防止显示时鼠标遮在菜单上
+    let pageY = event.clientY;
+
+    //其他额外菜单
+    const $rightMenuOther = document.querySelector(".rightMenuOther");
+    const $rightMenuPlugin = document.querySelector(".rightMenuPlugin");
+    const $rightMenuCopyText = document.querySelector("#menu-copytext");
+    const $rightMenuPasteText = document.querySelector("#menu-pastetext");
+    const $rightMenuCommentText = document.querySelector("#menu-commenttext");
+    const $rightMenuNewWindow = document.querySelector("#menu-newwindow");
+    const $rightMenuNewWindowImg = document.querySelector("#menu-newwindowimg");
+    const $rightMenuCopyLink = document.querySelector("#menu-copylink");
+    const $rightMenuCopyImg = document.querySelector("#menu-copyimg");
+    const $rightMenuDownloadImg = document.querySelector("#menu-downloadimg");
+    const $rightMenuSearch = document.querySelector("#menu-search");
+    const $rightMenuSearchBaidu = document.querySelector("#menu-searchBaidu");
+    const $rightMenuMusicToggle = document.querySelector("#menu-music-toggle");
+    const $rightMenuMusicBack = document.querySelector("#menu-music-back");
+    const $rightMenuMusicForward = document.querySelector("#menu-music-forward");
+    const $rightMenuMusicPlaylist = document.querySelector("#menu-music-playlist");
+    const $rightMenuMusicCopyMusicName = document.querySelector("#menu-music-copyMusicName");
+
+    let href = event.target.href;
+    let imgsrc = event.target.currentSrc;
+
+    // 判断模式 扩展模式为有事件
+    let pluginMode = false;
+    $rightMenuOther.style.display = "block";
+    globalEvent = event;
+
+    // 检查是否需要复制 是否有选中文本
+    if (selectTextNow && window.getSelection()) {
+      pluginMode = true;
+      $rightMenuCopyText.style.display = "block";
+      $rightMenuCommentText.style.display = "block";
+      $rightMenuSearch.style.display = "block";
+      $rightMenuSearchBaidu.style.display = "block";
+    } else {
+      $rightMenuCopyText.style.display = "none";
+      $rightMenuCommentText.style.display = "none";
+      $rightMenuSearchBaidu.style.display = "none";
+      $rightMenuSearch.style.display = "none";
+    }
+
+    //检查是否右键点击了链接a标签
+    if (href) {
+      pluginMode = true;
+      $rightMenuNewWindow.style.display = "block";
+      $rightMenuCopyLink.style.display = "block";
+      domhref = href;
+    } else {
+      $rightMenuNewWindow.style.display = "none";
+      $rightMenuCopyLink.style.display = "none";
+    }
+
+    //检查是否需要复制图片
+    if (imgsrc) {
+      pluginMode = true;
+      $rightMenuCopyImg.style.display = "block";
+      $rightMenuDownloadImg.style.display = "block";
+      $rightMenuNewWindowImg.style.display = "block";
+      document.getElementById("rightMenu").style.width="12rem"
+      domImgSrc = imgsrc;
+    } else {
+      $rightMenuCopyImg.style.display = "none";
+      $rightMenuDownloadImg.style.display = "none";
+      $rightMenuNewWindowImg.style.display = "none";
+    }
+
+    // 判断是否为输入框
+    if (event.target.tagName.toLowerCase() === "input" || event.target.tagName.toLowerCase() === "textarea") {
+      pluginMode = true;
+      $rightMenuPasteText.style.display = "block";
+    } else {
+      $rightMenuPasteText.style.display = "none";
+    }
+    const navMusicEl = document.querySelector("#nav-music");
+    //判断是否是音乐
+    if (navMusicEl && navMusicEl.contains(event.target)) {
+      pluginMode = true;
+      $rightMenuMusicToggle.style.display = "block";
+      $rightMenuMusicBack.style.display = "block";
+      $rightMenuMusicForward.style.display = "block";
+      $rightMenuMusicPlaylist.style.display = "block";
+      $rightMenuMusicCopyMusicName.style.display = "block";
+    } else {
+      $rightMenuMusicToggle.style.display = "none";
+      $rightMenuMusicBack.style.display = "none";
+      $rightMenuMusicForward.style.display = "none";
+      $rightMenuMusicPlaylist.style.display = "none";
+      $rightMenuMusicCopyMusicName.style.display = "none";
+    }
+
+    // 如果不是扩展模式则隐藏扩展模块
+    if (pluginMode) {
+      $rightMenuOther.style.display = "none";
+      $rightMenuPlugin.style.display = "block";
+    } else {
+      $rightMenuPlugin.style.display = "none";
+    }
+
+    rm.reloadrmSize();
+
+    // 鼠标默认显示在鼠标右下方，当鼠标靠右或靠下时，将菜单显示在鼠标左方\上方
+    if (pageX + rmWidth > window.innerWidth) {
+      pageX -= rmWidth + 10;
+    }
+    if (pageY + rmHeight > window.innerHeight) {
+      pageY -= pageY + rmHeight - window.innerHeight;
+    }
+
+    rm.showRightMenu(true, pageY, pageX);
+    document.getElementById("rightmenu-mask").style.display = "flex";
+    return false;
+  }
+};
+
+// 监听右键初始化
+window.oncontextmenu = oncontextmenuFunction
+
+// 下载图片状态
+rm.downloadimging = false;
+
+// 复制图片到剪贴板
+rm.writeClipImg = function (imgsrc) {
+  console.log("按下复制");
+  rm.hideRightMenu();
+  anzhiyu.snackbarShow("正在下载中，请稍后", false, 10000);
+  if (rm.downloadimging == false) {
+    rm.downloadimging = true;
+    setTimeout(function () {
+      copyImage(imgsrc);
+      anzhiyu.snackbarShow("复制成功！图片已添加盲水印，请遵守版权协议");
+      rm.downloadimging = false;
+    }, "10000");
+  }
+};
+
+function imageToBlob(imageURL) {
+  const img = new Image();
+  const c = document.createElement("canvas");
+  const ctx = c.getContext("2d");
+  img.crossOrigin = "";
+  img.src = imageURL;
+  return new Promise(resolve => {
+    img.onload = function () {
+      c.width = this.naturalWidth;
+      c.height = this.naturalHeight;
+      ctx.drawImage(this, 0, 0);
+      c.toBlob(
+        blob => {
+          // here the image is a blob
+          resolve(blob);
+        },
+        "image/png",
+        0.75
+      );
+    };
+  });
+}
+
+async function copyImage(imageURL) {
+  const blob = await imageToBlob(imageURL);
+  const item = new ClipboardItem({ "image/png": blob });
+  navigator.clipboard.write([item]);
+}
+
+rm.copyUrl = function (id) {
+  const input = document.createElement("input"); // Create a new <input> element
+  input.id = "copyVal"; // Set the id of the new element to "copyVal"
+  document.body.appendChild(input); // Append the new element to the end of the <body> element
+  
+  const text = id;
+  input.value = text;
+  input.select();
+  input.setSelectionRange(0, input.value.length);
+  document.execCommand("copy");
+  
+  input.remove(); // Remove the <input> element from the DOM
+};
+
+function stopMaskScroll() {
+  if (document.getElementById("rightmenu-mask")) {
+    let xscroll = document.getElementById("rightmenu-mask");
+    xscroll.addEventListener(
+      "mousewheel",
+      function (e) {
+        //阻止浏览器默认方法
+        rm.hideRightMenu();
+        // e.preventDefault();
+      },
+      { passive: true }
+    );
+  }
+  if (document.getElementById("rightMenu")) {
+    let xscroll = document.getElementById("rightMenu");
+    xscroll.addEventListener(
+      "mousewheel",
+      function (e) {
+        //阻止浏览器默认方法
+        rm.hideRightMenu();
+        // e.preventDefault();
+      },
+      { passive: true }
+    );
+  }
+}
+
+rm.rightmenuCopyText = function (txt) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(txt);
+  }
+  rm.hideRightMenu();
+};
+
+rm.copyPageUrl = function (url) {
+  if (!url) {
+    url = window.location.href;
+  }
+  rm.copyUrl(url);
+  anzhiyu.snackbarShow("复制本页链接地址成功", false, 2000);
+  rm.hideRightMenu();
+};
+
+rm.sharePage = function () {
+  var content = window.location.href;
+  rm.copyUrl(url);
+  anzhiyu.snackbarShow("复制本页链接地址成功", false, 2000);
+  rm.hideRightMenu();
+};
+
+// 复制当前选中文本
+var selectTextNow = "";
+document.onmouseup = document.ondblclick = selceText;
+
+function selceText() {
+  var txt;
+  if (document.selection) {
+    txt = document.selection.createRange().text;
+  } else {
+    txt = window.getSelection().toString();
+  }
+  selectTextNow = txt !== "" ? txt : "";
+}
+
+// 读取剪切板
+rm.readClipboard = function () {
+  if (navigator.clipboard) {
+    navigator.clipboard.readText().then(clipText => rm.insertAtCaret(globalEvent.target, clipText));
+  }
+};
+
+// 粘贴文本到焦点
+rm.insertAtCaret = function (elemt, value) {
+  const startPos = elemt.selectionStart,
+    endPos = elemt.selectionEnd;
+  if (document.selection) {
+    elemt.focus();
+    var sel = document.selection.createRange();
+    sel.text = value;
+    elemt.focus();
+  } else {
+    if (startPos || startPos == "0") {
+      var scrollTop = elemt.scrollTop;
+      elemt.value = elemt.value.substring(0, startPos) + value + elemt.value.substring(endPos, elemt.value.length);
+      elemt.focus();
+      elemt.selectionStart = startPos + value.length;
+      elemt.selectionEnd = startPos + value.length;
+      elemt.scrollTop = scrollTop;
+    } else {
+      elemt.value += value;
+      elemt.focus();
+    }
+  }
+};
+
+//粘贴文本
+rm.pasteText = function () {
+  const result = rm.readClipboard() || "";
+  rm.hideRightMenu();
+};
+
+//引用到评论
+rm.rightMenuCommentText = function (txt) {
+  rm.hideRightMenu();
+  const postCommentDom = document.getElementById("post-comment");
+  var domTop = postCommentDom.offsetTop;
+  window.scrollTo(0, domTop - 80);
+  if (txt == "undefined" || txt == "null") txt = "好棒！";
+  function setText() {
+    setTimeout(() => {
+      var input = document.getElementsByClassName("el-textarea__inner")[0];
+      if (!input) setText();
+      let evt = document.createEvent("HTMLEvents");
+      evt.initEvent("input", true, true);
+      let inputValue = replaceAll(txt, "\n", "\n> ");
+      input.value = "> " + inputValue + "\n\n";
+      input.dispatchEvent(evt);
+      input.focus();
+      input.setSelectionRange(-1, -1);
+      if (document.getElementById("comment-tips")) {
+        document.getElementById("comment-tips").classList.add("show");
+      }
+    }, 100);
+  }
+  setText();
+};
+
+//替换所有内容
+function replaceAll(string, search, replace) {
+  return string.split(search).join(replace);
+}
+
+// 百度搜索
+rm.searchBaidu = function () {
+  anzhiyu.snackbarShow("即将跳转到百度搜索", false, 2000);
+  setTimeout(function () {
+    window.open("https://www.baidu.com/s?wd=" + selectTextNow);
+  }, "2000");
+  rm.hideRightMenu();
+};
+
+//分享链接
+rm.copyLink = function () {
+  rm.rightmenuCopyText(domhref);
+  anzhiyu.snackbarShow("已复制链接地址");
+};
+
+function addRightMenuClickEvent() {
+  // 添加点击事件
+  document.getElementById("menu-backward").addEventListener("click", function () {
+  window.history.back();
+    rm.hideRightMenu();
+  });
+
+  document.getElementById("menu-forward").addEventListener("click", function () {
+    window.history.forward();
+    rm.hideRightMenu();
+  });
+
+  document.getElementById("menu-refresh").addEventListener("click", function () {
+    window.location.reload();
+  });
+
+  document.getElementById("menu-top").addEventListener("click", function () {
+    anzhiyu.scrollToDest(0, 500);
+    rm.hideRightMenu();
+  });
+
+  const menuLinks = document.querySelectorAll(".menu-link");
+  menuLinks.forEach(function (link) {
+    link.addEventListener("click", rm.hideRightMenu);
+  });
+
+  document.getElementById("menu-darkmode").addEventListener("click", anzhiyu.switchDarkMode);
+
+  document.getElementById("menu-home") && document.getElementById("menu-home").addEventListener("click", function () {
+    window.location.href = window.location.origin;
+  });
+
+  document.getElementById("menu-randomPost").addEventListener("click", function () {
+    toRandomPost();
+  });
+
+  document.getElementById("menu-commentBarrage").addEventListener("click", anzhiyu.switchCommentBarrage);
+
+  document.getElementById("rightmenu-mask").addEventListener("click", rm.hideRightMenu);
+
+  document.getElementById("rightmenu-mask").addEventListener("contextmenu", function (event) {
+    rm.hideRightMenu();
+    event.preventDefault(); // Prevent the default context menu from appearing
+  });
+
+  document.getElementById("menu-copy").addEventListener("click", rm.copyPageUrl);
+
+  document.getElementById("menu-pastetext").addEventListener("click", rm.pasteText);
+
+  document.getElementById("menu-copytext").addEventListener("click", function () {
+    rm.rightmenuCopyText(selectTextNow);
+    anzhiyu.snackbarShow("复制成功，复制和转载请标注本文地址");
+  });
+
+  document.getElementById("menu-commenttext").addEventListener("click", function () {
+    rm.rightMenuCommentText(selectTextNow);
+  });
+
+  document.getElementById("menu-newwindow").addEventListener("click", function () {
+    window.open(domhref, "_blank");
+    rm.hideRightMenu();
+  });
+
+  document.getElementById("menu-copylink").addEventListener("click", rm.copyLink);
+
+  document.getElementById("menu-downloadimg").addEventListener("click", function () {
+    anzhiyu.downloadImage(domImgSrc, "anzhiyu");
+  });
+
+  document.getElementById("menu-newwindowimg").addEventListener("click", function () {
+    window.open(domImgSrc, "_blank");
+    rm.hideRightMenu();
+  });
+
+  document.getElementById("menu-copyimg").addEventListener("click", function () {
+    rm.writeClipImg(domImgSrc);
+  });
+
+  document.getElementById("menu-searchBaidu").addEventListener("click", rm.searchBaidu);
+
+  //音乐
+  document.getElementById("menu-music-toggle").addEventListener("click", anzhiyu.musicToggle);
+
+  document.getElementById("menu-music-back").addEventListener("click", anzhiyu.musicSkipBack);
+
+  document.getElementById("menu-music-forward").addEventListener("click", anzhiyu.musicSkipForward);
+
+  document.getElementById("menu-music-copyMusicName").addEventListener("click", function () {
+    rm.rightmenuCopyText(anzhiyu.musicGetName());
+    anzhiyu.snackbarShow("复制歌曲名称成功", false, 3000);
+  });
+
+}
+
+addRightMenuClickEvent();</script><script data-pjax>var themeColorMeta = document.querySelector('meta[name="theme-color"]');
+var pageHeaderEl = document.getElementById("page-header");
+var navMusicEl = document.getElementById("nav-music");
+var consoleEl = document.getElementById("console");
+// 已随机的歌曲
+var selectRandomSong = [];
+// 音乐默认声音大小
+var musicVolume = 0.8;
+// 是否切换了周杰伦音乐列表
+var changeMusicListFlag = false;
+// 当前默认播放列表
+var defaultPlayMusicList = [];
+
+document.getElementById("page-name").innerText = document.title.split(" | MENGLAN")[0];
+anzhiyu.initIndexEssay();
+anzhiyu.changeTimeInEssay();
+anzhiyu.removeBodyPaceClass();
+anzhiyu.qrcodeCreate();
+anzhiyu.changeTimeInAlbumDetail();
+anzhiyu.reflashEssayWaterFall();
+anzhiyu.sayhi();
+anzhiyu.stopImgRightDrag();
+anzhiyu.addNavBackgroundInit();
+anzhiyu.setValueToBodyType();
+anzhiyu.catalogActive();
+anzhiyu.tagsPageActive();
+anzhiyu.categoriesBarActive();
+anzhiyu.topCategoriesBarScroll();
+anzhiyu.switchRightClickMenuHotReview();
+
+anzhiyu.getCustomPlayList();
+anzhiyu.addEventListenerConsoleMusicList(false);
+setTimeout(() => {
+  if (typeof addFriendLinksInFooter === "function") {
+    addFriendLinksInFooter();
+  }
+}, 200)</script><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.1.0/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://npm.elemecdn.com/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
